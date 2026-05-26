@@ -1,15 +1,15 @@
 # CIFAR-10 Model Comparison Dashboard
 
-A modern Next.js dashboard for comparing ANN, CNN, and MobileNetV2 models trained on the CIFAR-10 dataset. The UI focuses on clean summaries of validation accuracy, optimizer impact, and training dynamics.
+A modern Next.js dashboard for comparing ANN, CNN, and MobileNetV2 models trained on the CIFAR-10 dataset. The UI emphasizes verbose analytics, per-model optimizer breakdowns, and chart-heavy summaries.
 
 ## Features
 
-- **Results overview** with top model, optimizer lift, and final epoch averages
-- **Model leaderboard** showing validation accuracy, gap, and training time
-- **Training dynamics** view for epoch-wise validation progress
-- **Optimizer analytics** comparing Adam vs SGD
-- **Architecture tradeoffs** across ANN, CNN, and transfer learning
-- **Class-wise accuracy** for the strongest classes
+- **Results overview** with top model, optimizer lift, epoch trends, and training time spread
+- **Model leaderboard** with accuracy distribution and generalization gap charts
+- **Training dynamics** for epoch-wise accuracy and loss
+- **Optimizer analytics** showing averages plus per-model performance
+- **Architecture tradeoffs** with per-architecture detail and trend charts
+- **Class-wise analytics** with confusion matrix and top confusions
 
 ## Dataset
 

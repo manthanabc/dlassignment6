@@ -33,3 +33,4 @@ export type ClassScore = {
 export const datasetStats = results.dataset as DatasetStats;
 export const modelRuns = results.modelRuns as ModelRun[];
 export const classScores = results.classScores as ClassScore[];
+export const confusionMatrix = results.confusionMatrix as number[][];

@@ -44,3 +44,11 @@ export const epochAverages = Array.from({ length: epochCount }, (_, i) => {
   return values.reduce((s, v) => s + v, 0) / values.length;
 });
 export const finalEpochAverage = epochAverages[epochAverages.length - 1];
+export const trainEpochAverages = Array.from({ length: epochCount }, (_, i) => {
+  const values = modelRuns.map((run) => run.points[i].accuracy);
+  return values.reduce((s, v) => s + v, 0) / values.length;
+});
+export const lossEpochAverages = Array.from({ length: epochCount }, (_, i) => {
+  const values = modelRuns.map((run) => run.points[i].valLoss);
+  return values.reduce((s, v) => s + v, 0) / values.length;
+});

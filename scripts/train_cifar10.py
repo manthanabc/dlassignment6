@@ -137,6 +137,19 @@ def per_class_accuracy(model: tf.keras.Model, x: np.ndarray, y: np.ndarray, batc
     return scores
 
 
+def compute_confusion_matrix(
+    model: tf.keras.Model, x: np.ndarray, y: np.ndarray, batch_size: int
+) -> list[list[float]]:
+    preds = model.predict(x, batch_size=batch_size, verbose=0)
+    y_pred = np.argmax(preds, axis=1)
+    matrix = np.zeros((len(CLASS_NAMES), len(CLASS_NAMES)), dtype=np.int64)
+    for true_label, pred_label in zip(y, y_pred):
+        matrix[true_label, pred_label] += 1
+    row_sums = matrix.sum(axis=1, keepdims=True)
+    normalized = matrix / np.maximum(row_sums, 1)
+    return normalized.round(4).tolist()
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Train CIFAR-10 models and export dashboard metrics.")
     parser.add_argument("--epochs", type=int, default=3)
@@ -214,12 +227,14 @@ def main() -> None:
         )
 
     class_scores = []
+    confusion_matrix = []
     if best_model is not None:
         scores = per_class_accuracy(best_model, x_val, y_val, args.batch_size)
         class_scores = [
             {"label": CLASS_NAMES[idx], "score": float(score)}
             for idx, score in enumerate(scores)
         ]
+        confusion_matrix = compute_confusion_matrix(best_model, x_val, y_val, args.batch_size)
 
     results = {
         "dataset": {
@@ -231,6 +246,7 @@ def main() -> None:
             "classes": CLASS_NAMES,
         },
         "classScores": class_scores,
+        "confusionMatrix": confusion_matrix,
         "modelRuns": model_runs,
     }
 

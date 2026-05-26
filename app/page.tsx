@@ -1,6 +1,13 @@
 import AnalyticsShell from './components/AnalyticsShell';
-import { ranked, optimizerStats, pct, finalEpochAverage } from '@/lib/analytics';
-import { classScores, datasetStats } from '@/lib/cifar10Data';
+import {
+  ranked,
+  optimizerStats,
+  pct,
+  finalEpochAverage,
+  epochAverages,
+  trainEpochAverages,
+} from '@/lib/analytics';
+import { classScores, datasetStats, modelRuns } from '@/lib/cifar10Data';
 
 export default function Home() {
   const best = ranked[0];
@@ -9,17 +16,29 @@ export default function Home() {
   const topClasses = [...classScores]
     .sort((a, b) => b.score - a.score)
     .slice(0, 4);
+  const timeMax = Math.max(...modelRuns.map((run) => run.trainingSeconds));
+  const avgTrainTime =
+    modelRuns.reduce((sum, run) => sum + run.trainingSeconds, 0) / modelRuns.length;
 
   return (
     <AnalyticsShell
       title={`${datasetStats.name} Results`}
-      subtitle="Clean summary of ANN, CNN, and MobileNetV2 performance across optimizers"
+      subtitle="Verbose summary of ANN, CNN, and MobileNetV2 performance across optimizers"
     >
       <section className="grid gap-4 md:grid-cols-4">
         <Card title="Top Model" value={`${best.id} (${pct(best.valAcc)})`} />
         <Card title="Accuracy Lift" value={pct(best.gain)} />
         <Card title="Adam vs SGD" value={pct(adam.avgAcc - sgd.avgAcc)} />
         <Card title="Final Epoch Mean" value={pct(finalEpochAverage)} />
+      </section>
+
+      <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <h2 className="text-lg font-semibold">Run Summary</h2>
+        <p className="mt-2 text-sm text-slate-600">
+          {ranked.length} runs across {datasetStats.classCount} classes. Best validation
+          accuracy is {pct(best.valAcc)} with a {pct(best.gap)} generalization gap and
+          {best.trainingSeconds}s training time. Average training time is {avgTrainTime.toFixed(1)}s.
+        </p>
       </section>
 
       <section className="grid gap-4 lg:grid-cols-3">
@@ -53,6 +72,60 @@ export default function Home() {
               <div key={r.id}>
                 <div className="flex justify-between text-xs"><span>{r.id}</span><span>{pct(r.valAcc)}</span></div>
                 <div className="h-2 rounded bg-slate-100"><div className="h-2 rounded bg-gradient-to-r from-cyan-500 to-blue-600" style={{ width: `${r.valAcc * 100}%` }} /></div>
+              </div>
+            ))}
+          </div>
+        </article>
+      </section>
+
+      <section className="grid gap-4 lg:grid-cols-2">
+        <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 className="text-lg font-semibold">Average Accuracy by Epoch</h2>
+          <p className="mt-2 text-sm text-slate-600">
+            Aggregated training vs validation accuracy trends.
+          </p>
+          <div className="mt-4 space-y-3">
+            {epochAverages.map((valAcc, idx) => (
+              <div key={`epoch-${idx}`} className="space-y-1">
+                <div className="flex justify-between text-xs text-slate-600">
+                  <span>Epoch {idx + 1}</span>
+                  <span>Train {pct(trainEpochAverages[idx])} · Val {pct(valAcc)}</span>
+                </div>
+                <div className="h-3 rounded bg-slate-100">
+                  <div
+                    className="h-3 rounded bg-slate-300"
+                    style={{ width: `${trainEpochAverages[idx] * 100}%` }}
+                  />
+                </div>
+                <div className="h-2 rounded bg-slate-100">
+                  <div
+                    className="h-2 rounded bg-gradient-to-r from-indigo-500 to-blue-500"
+                    style={{ width: `${valAcc * 100}%` }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 className="text-lg font-semibold">Training Time Spread</h2>
+          <p className="mt-2 text-sm text-slate-600">
+            Relative training time per model run.
+          </p>
+          <div className="mt-4 space-y-2">
+            {ranked.map((run) => (
+              <div key={`time-${run.id}`}>
+                <div className="flex justify-between text-xs text-slate-600">
+                  <span>{run.id}</span>
+                  <span>{run.trainingSeconds}s</span>
+                </div>
+                <div className="h-2 rounded bg-slate-100">
+                  <div
+                    className="h-2 rounded bg-amber-500"
+                    style={{ width: `${(run.trainingSeconds / timeMax) * 100}%` }}
+                  />
+                </div>
               </div>
             ))}
           </div>
