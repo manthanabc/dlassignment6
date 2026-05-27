@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CIFAR-10 Model Comparison Dashboard",
-  description: "Deep Learning Evaluation - CIFAR-10 Object Recognition",
+  title: "Flowers Model Comparison Dashboard",
+  description: "Deep Learning Evaluation - Flowers Recognition Dataset",
 };
 
 export default function RootLayout({

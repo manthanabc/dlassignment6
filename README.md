@@ -1,6 +1,6 @@
-# CIFAR-10 Model Comparison Dashboard
+# Flowers Model Comparison Dashboard
 
-A modern Next.js dashboard for comparing ANN, CNN, and MobileNetV2 models trained on the CIFAR-10 dataset. The UI emphasizes verbose analytics, per-model optimizer breakdowns, and chart-heavy summaries.
+A modern Next.js dashboard for comparing ANN, CNN, and MobileNet models trained on the Kaggle Flowers Recognition dataset. The UI emphasizes verbose analytics, per-model optimizer breakdowns, and chart-heavy summaries.
 
 ## Features
 
@@ -13,7 +13,7 @@ A modern Next.js dashboard for comparing ANN, CNN, and MobileNetV2 models traine
 
 ## Dataset
 
-CIFAR-10 object recognition (10 classes): airplane, automobile, bird, cat, deer, dog, frog, horse, ship, truck.
+Flowers Recognition (Kaggle `alxmamaev/flowers-recognition`) with 5 classes: daisy, dandelion, rose, sunflower, tulip.
 
 ## Getting Started
 
@@ -28,16 +28,16 @@ Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
 
 ## Training Script
 
-The dashboard reads data from `lib/cifar10Results.json`. Generate a fresh export by running the training script:
+The dashboard reads data from `lib/flowersResults.json`. Generate a fresh export by running the training script:
 
 ```bash
-python scripts/train_cifar10.py --epochs 3 --output lib/cifar10Results.json
+python scripts/train_flowers.py --epochs 3 --output lib/flowersResults.json
 ```
 
 Dependencies for the training script:
 
 ```bash
-pip install tensorflow numpy
+pip install tensorflow numpy kagglehub
 ```
 
 Use `--limit` and `--val-limit` to run quicker experiments on smaller subsets.
@@ -53,11 +53,11 @@ app/
 ├── architecture/            # Architecture tradeoffs
 ├── classes/                 # Class-wise accuracy
 lib/
-├── cifar10Results.json      # Generated metrics used by the UI
-├── cifar10Data.ts           # Typed exports for the dashboard
+├── flowersResults.json      # Generated metrics used by the UI
+├── flowersData.ts           # Typed exports for the dashboard
 ├── analytics.ts             # Aggregations and summaries
 scripts/
-└── train_cifar10.py         # Training + export pipeline
+└── train_flowers.py         # Training + export pipeline
 ```
 
 ## Building for Production

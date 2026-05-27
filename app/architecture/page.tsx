@@ -4,7 +4,7 @@ import { architectureStats, pct, summaries } from '@/lib/analytics';
 export default function ArchitecturePage() {
   const maxAcc = Math.max(...architectureStats.map((a) => a.avgAcc));
   return (
-    <AnalyticsShell title="Architecture Tradeoffs" subtitle="Accuracy, time, and generalization profile by model family">
+    <AnalyticsShell title="Architecture Tradeoffs" subtitle="Accuracy, time, and generalization profile by model family (flowers)">
       <section className="grid gap-4 lg:grid-cols-2">
         <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
           <h2 className="text-lg font-semibold">Average Validation Accuracy</h2>

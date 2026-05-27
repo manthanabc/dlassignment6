@@ -1,4 +1,4 @@
-import results from './cifar10Results.json';
+import results from './flowersResults.json';
 
 export type TrainingPoint = {
   epoch: number;

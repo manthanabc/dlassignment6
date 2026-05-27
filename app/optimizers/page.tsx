@@ -15,7 +15,7 @@ export default function OptimizersPage() {
     return { arch, delta };
   });
   return (
-    <AnalyticsShell title="Optimizer Analytics" subtitle="Aggregate comparison between Adam and SGD on CIFAR-10">
+    <AnalyticsShell title="Optimizer Analytics" subtitle="Aggregate comparison between Adam and SGD on Flowers Recognition">
       <section className="grid gap-4 md:grid-cols-2">
         {optimizerStats.map((row) => (
           <article key={row.opt} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">

@@ -1,4 +1,4 @@
-import { modelRuns } from './cifar10Data';
+import { modelRuns } from './flowersData';
 
 export const pct = (v: number) => `${(v * 100).toFixed(2)}%`;
 

@@ -7,7 +7,7 @@ import {
   epochAverages,
   trainEpochAverages,
 } from '@/lib/analytics';
-import { classScores, datasetStats, modelRuns } from '@/lib/cifar10Data';
+import { classScores, datasetStats, modelRuns } from '@/lib/flowersData';
 
 export default function Home() {
   const best = ranked[0];

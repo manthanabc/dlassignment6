@@ -7,7 +7,7 @@ export default function ModelsPage() {
   const avgAcc = ranked.reduce((sum, row) => sum + row.valAcc, 0) / ranked.length;
   const maxGap = Math.max(...ranked.map((row) => row.gap));
   return (
-    <AnalyticsShell title="Model Leaderboard" subtitle="Final validation metrics and generalization gap on CIFAR-10">
+    <AnalyticsShell title="Model Leaderboard" subtitle="Final validation metrics and generalization gap on Flowers Recognition">
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
         <h2 className="text-lg font-semibold">Verbose Summary</h2>
         <p className="mt-2 text-sm text-slate-600">

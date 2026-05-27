@@ -1,5 +1,5 @@
 import AnalyticsShell from '../components/AnalyticsShell';
-import { classScores, datasetStats, confusionMatrix } from '@/lib/cifar10Data';
+import { classScores, datasetStats, confusionMatrix } from '@/lib/flowersData';
 import { pct } from '@/lib/analytics';
 
 export default function ClassesPage() {
