@@ -19,8 +19,16 @@ export type ModelRun = {
 export type DatasetStats = {
   name: string;
   source: string;
-  trainImages: number;
-  valImages: number;
+  doi: string;
+  published: string;
+  patients: number;
+  totalSlices: number;
+  views: string[];
+  sliceResolution: string;
+  bitDepth: string;
+  axialSliceThicknessMm: number;
+  axialSpacingMm: number;
+  pixelSpacingMm: number;
   classCount: number;
   classes: string[];
 };

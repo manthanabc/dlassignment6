@@ -5,7 +5,7 @@ import { pct, epochAverages, trainEpochAverages, lossEpochAverages } from '@/lib
 export default function TrainingPage() {
   const maxLoss = Math.max(...lossEpochAverages);
   return (
-    <AnalyticsShell title="Training Dynamics" subtitle="Epoch-wise validation progress on Flowers Recognition">
+    <AnalyticsShell title="Training Dynamics" subtitle="Epoch-wise validation progress on Lumbar Spine MRI">
       <section className="grid gap-4 lg:grid-cols-2">
         <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
           <h2 className="text-lg font-semibold">Average Accuracy Trend</h2>

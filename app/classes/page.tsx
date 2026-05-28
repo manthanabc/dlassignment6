@@ -23,9 +23,9 @@ export default function ClassesPage() {
   });
 
   return (
-    <AnalyticsShell title="Class-wise Analytics" subtitle="Per-class validation accuracy from the best-performing run">
+    <AnalyticsShell title="IVD Level Analytics" subtitle="Per-level validation accuracy from the best-performing run">
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <p className="text-sm text-slate-600">Classes: {datasetStats.classes.join(', ')}</p>
+        <p className="text-sm text-slate-600">IVD levels: {datasetStats.classes.join(', ')}</p>
         <div className="mt-4 space-y-3">
           {classScores.map((c) => (
             <div key={c.label}>
@@ -79,7 +79,7 @@ export default function ClassesPage() {
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
         <h2 className="text-lg font-semibold">Top Confusions</h2>
         <p className="mt-2 text-sm text-slate-600">
-          The most frequent misclassification for each class based on the confusion matrix.
+          The most frequent misclassification for each level based on the confusion matrix.
         </p>
         <div className="mt-4 space-y-2">
           {classConfusions.map((row) => (

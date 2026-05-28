@@ -1,6 +1,6 @@
-# Flowers Model Comparison Dashboard
+# Lumbar Spine MRI Model Comparison Dashboard
 
-A modern Next.js dashboard for comparing ANN, CNN, and MobileNet models trained on the Kaggle Flowers Recognition dataset. The UI emphasizes verbose analytics, per-model optimizer breakdowns, and chart-heavy summaries.
+A modern Next.js dashboard for comparing ANN, CNN, and MobileNet model baselines using metadata from the Lumbar Spine MRI Dataset. The UI emphasizes verbose analytics, per-model optimizer breakdowns, and chart-heavy summaries.
 
 ## Features
 
@@ -13,7 +13,15 @@ A modern Next.js dashboard for comparing ANN, CNN, and MobileNet models trained 
 
 ## Dataset
 
-Flowers Recognition (Kaggle `alxmamaev/flowers-recognition`) with 5 classes: daisy, dandelion, rose, sunflower, tulip.
+Lumbar Spine MRI Dataset (Mendeley Data, Version 2). DOI: `10.17632/k57fr854j2.2`.
+
+Key metadata highlights:
+- 515 patients
+- 48,345 MRI slices (axial and sagittal views)
+- Mostly 320x320 resolution (some 320x310), 12-bit depth
+- Axial slices: 4 mm thickness, 4.4 mm spacing, 0.6875 mm pixel spacing
+
+This project uses **metadata only**. No MRI slices are downloaded or processed.
 
 ## Getting Started
 
@@ -26,21 +34,9 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
 
-## Training Script
+## Results Data
 
-The dashboard reads data from `lib/flowersResults.json`. Generate a fresh export by running the training script:
-
-```bash
-python scripts/train_flowers.py --epochs 3 --output lib/flowersResults.json
-```
-
-Dependencies for the training script:
-
-```bash
-pip install tensorflow numpy kagglehub
-```
-
-Use `--limit` and `--val-limit` to run quicker experiments on smaller subsets.
+The dashboard reads metadata and illustrative metrics from `lib/flowersResults.json`. Update this file directly if you need to change the dataset metadata or class labels.
 
 ## Project Structure
 
@@ -53,12 +49,16 @@ app/
 ├── architecture/            # Architecture tradeoffs
 ├── classes/                 # Class-wise accuracy
 lib/
-├── flowersResults.json      # Generated metrics used by the UI
+├── flowersResults.json      # Metadata + illustrative metrics used by the UI
 ├── flowersData.ts           # Typed exports for the dashboard
 ├── analytics.ts             # Aggregations and summaries
 scripts/
-└── train_flowers.py         # Training + export pipeline
+└── train_flowers.py         # Legacy training script (not used for metadata-only flow)
 ```
+
+## Citation
+
+If you use the dataset in your research, please cite the original papers listed in the dataset record.
 
 ## Building for Production
 

@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Flowers Model Comparison Dashboard",
-  description: "Deep Learning Evaluation - Flowers Recognition Dataset",
+  title: "Lumbar Spine MRI Model Dashboard",
+  description: "Deep Learning Evaluation - Lumbar Spine MRI Dataset",
 };
 
 export default function RootLayout({

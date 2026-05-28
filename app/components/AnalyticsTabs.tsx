@@ -17,7 +17,7 @@ export default function AnalyticsTabs() {
   const tabs = [
     { id: 'optimizer' as const, label: '🔧 Optimizer Analysis' },
     { id: 'architecture' as const, label: '🏗️ Architecture Analysis' },
-    { id: 'class' as const, label: '🎯 Class-wise Performance' },
+    { id: 'class' as const, label: '🎯 Level-wise Performance' },
   ];
 
   return (

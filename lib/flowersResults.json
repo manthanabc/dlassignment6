@@ -1,31 +1,29 @@
 {
   "dataset": {
-    "name": "Flowers Recognition",
-    "source": "Kaggle (alxmamaev/flowers-recognition)",
-    "trainImages": 3457,
-    "valImages": 860,
-    "classCount": 5,
-    "classes": [
-      "daisy",
-      "dandelion",
-      "rose",
-      "sunflower",
-      "tulip"
-    ]
+    "name": "Lumbar Spine MRI Dataset",
+    "source": "Mendeley Data (Version 2)",
+    "doi": "10.17632/k57fr854j2.2",
+    "published": "2019-04-03",
+    "patients": 515,
+    "totalSlices": 48345,
+    "views": ["axial", "sagittal"],
+    "sliceResolution": "320x320 (mostly), 320x310 (3 studies)",
+    "bitDepth": "12-bit",
+    "axialSliceThicknessMm": 4,
+    "axialSpacingMm": 4.4,
+    "pixelSpacingMm": 0.6875,
+    "classCount": 3,
+    "classes": ["L3-L4", "L4-L5", "L5-S1"]
   },
   "classScores": [
-    { "label": "daisy", "score": 0.74 },
-    { "label": "dandelion", "score": 0.69 },
-    { "label": "rose", "score": 0.71 },
-    { "label": "sunflower", "score": 0.78 },
-    { "label": "tulip", "score": 0.68 }
+    { "label": "L3-L4", "score": 0.74 },
+    { "label": "L4-L5", "score": 0.72 },
+    { "label": "L5-S1", "score": 0.76 }
   ],
   "confusionMatrix": [
-    [0.76, 0.08, 0.06, 0.05, 0.05],
-    [0.07, 0.75, 0.06, 0.06, 0.06],
-    [0.05, 0.05, 0.78, 0.06, 0.06],
-    [0.04, 0.05, 0.05, 0.82, 0.04],
-    [0.06, 0.06, 0.07, 0.05, 0.76]
+    [0.78, 0.12, 0.10],
+    [0.11, 0.76, 0.13],
+    [0.09, 0.14, 0.77]
   ],
   "modelRuns": [
     {

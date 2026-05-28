@@ -15,10 +15,20 @@ export type ModelRun = {
 };
 
 export const datasetStats = {
-  trainImages: 3457,
-  valImages: 860,
-  classCount: 5,
-  classes: ['daisy', 'dandelion', 'rose', 'sunflower', 'tulip'],
+  name: 'Lumbar Spine MRI Dataset',
+  source: 'Mendeley Data (Version 2)',
+  doi: '10.17632/k57fr854j2.2',
+  published: '2019-04-03',
+  patients: 515,
+  totalSlices: 48345,
+  views: ['axial', 'sagittal'],
+  sliceResolution: '320x320 (mostly), 320x310 (3 studies)',
+  bitDepth: '12-bit',
+  axialSliceThicknessMm: 4,
+  axialSpacingMm: 4.4,
+  pixelSpacingMm: 0.6875,
+  classCount: 3,
+  classes: ['L3-L4', 'L4-L5', 'L5-S1'],
 };
 
 export const modelRuns: ModelRun[] = [

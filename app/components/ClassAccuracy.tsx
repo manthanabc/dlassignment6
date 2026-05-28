@@ -21,7 +21,7 @@ export default function ClassAccuracy({
         borderColor: '#D4C5C1',
       }}
     >
-      <h3 className="text-lg font-light mb-4 text-gray-700">Per-Class Accuracy</h3>
+      <h3 className="text-lg font-light mb-4 text-gray-700">Per-Level Accuracy</h3>
 
       <div className="space-y-4">
         {entries.map(([className, accuracy]) => (

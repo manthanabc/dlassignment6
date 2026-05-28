@@ -1,9 +1,9 @@
 'use client';
 
-import { classAccuracy, modelResults } from '@/lib/mockData';
+import { classAccuracy, classNames, modelResults } from '@/lib/mockData';
 
 export default function ClassAccuracyOverall() {
-  const classes = ['daisy', 'dandelion', 'rose', 'sunflower', 'tulip'];
+  const classes = classNames;
   const models = Object.keys(modelResults).sort(
     (a, b) => modelResults[b] - modelResults[a]
   );
@@ -32,7 +32,7 @@ export default function ClassAccuracyOverall() {
         }}
       >
         <h4 className="text-sm font-light text-gray-700 mb-6">
-          Average Per-Class Accuracy
+          Average Per-Level Accuracy
         </h4>
         <div className="space-y-4">
           {classAverages
@@ -74,7 +74,7 @@ export default function ClassAccuracyOverall() {
         }}
       >
         <h4 className="text-sm font-light text-gray-700 mb-6">
-          Class Accuracy Heatmap (by Model)
+          Level Accuracy Heatmap (by Model)
         </h4>
         <table className="w-full text-xs">
           <thead>
@@ -146,7 +146,7 @@ export default function ClassAccuracyOverall() {
         }}
       >
         <h4 className="text-sm font-light text-gray-700 mb-6">
-          Class Difficulty Analysis
+          Level Difficulty Analysis
         </h4>
         <div className="grid grid-cols-3 gap-4">
           <div
@@ -157,7 +157,7 @@ export default function ClassAccuracyOverall() {
             }}
           >
             <p className="text-xs font-light text-gray-500 uppercase mb-2">
-              Easiest Class
+              Easiest Level
             </p>
             <p className="text-2xl font-light text-gray-900 capitalize mb-1">
               {classAverages.reduce((max, c) =>
@@ -181,7 +181,7 @@ export default function ClassAccuracyOverall() {
             }}
           >
             <p className="text-xs font-light text-gray-500 uppercase mb-2">
-              Hardest Class
+              Hardest Level
             </p>
             <p className="text-2xl font-light text-gray-900 capitalize mb-1">
               {classAverages.reduce((min, c) =>
@@ -215,7 +215,7 @@ export default function ClassAccuracyOverall() {
               ).toFixed(1)}%
             </p>
             <p className="text-sm font-light text-gray-600">
-              {classAverages.length} classes
+              {classAverages.length} levels
             </p>
           </div>
         </div>

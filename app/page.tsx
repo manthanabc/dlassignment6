@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <AnalyticsShell
       title={`${datasetStats.name} Results`}
-      subtitle="Verbose summary of ANN, CNN, and MobileNetV2 performance across optimizers"
+      subtitle="Metadata-only summary of ANN, CNN, and MobileNetV2 baselines across optimizers"
     >
       <section className="grid gap-4 md:grid-cols-4">
         <Card title="Top Model" value={`${best.id} (${pct(best.valAcc)})`} />
@@ -35,7 +35,7 @@ export default function Home() {
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
         <h2 className="text-lg font-semibold">Run Summary</h2>
         <p className="mt-2 text-sm text-slate-600">
-          {ranked.length} runs across {datasetStats.classCount} classes. Best validation
+          {ranked.length} runs across {datasetStats.classCount} IVD levels. Best validation
           accuracy is {pct(best.valAcc)} with a {pct(best.gap)} generalization gap and
           {best.trainingSeconds}s training time. Average training time is {avgTrainTime.toFixed(1)}s.
         </p>
@@ -44,17 +44,26 @@ export default function Home() {
       <section className="grid gap-4 lg:grid-cols-3">
         <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
           <h2 className="text-lg font-semibold">Dataset Snapshot</h2>
-          <p className="mt-2 text-sm text-slate-600">Source: {datasetStats.source}</p>
+          <p className="mt-2 text-sm text-slate-600">
+            Source: {datasetStats.source} · DOI: {datasetStats.doi}
+          </p>
+          <p className="text-xs text-slate-500">Published: {datasetStats.published}</p>
           <div className="mt-4 space-y-2 text-sm text-slate-700">
-            <div className="flex justify-between"><span>Train images</span><span className="font-semibold">{datasetStats.trainImages.toLocaleString()}</span></div>
-            <div className="flex justify-between"><span>Validation images</span><span className="font-semibold">{datasetStats.valImages.toLocaleString()}</span></div>
-            <div className="flex justify-between"><span>Classes</span><span className="font-semibold">{datasetStats.classCount}</span></div>
-            <p className="text-xs text-slate-500">{datasetStats.classes.join(', ')}</p>
+            <div className="flex justify-between"><span>Patients</span><span className="font-semibold">{datasetStats.patients.toLocaleString()}</span></div>
+            <div className="flex justify-between"><span>Total slices</span><span className="font-semibold">{datasetStats.totalSlices.toLocaleString()}</span></div>
+            <div className="flex justify-between"><span>Views</span><span className="font-semibold">{datasetStats.views.join(', ')}</span></div>
+            <div className="flex justify-between"><span>Slice resolution</span><span className="font-semibold">{datasetStats.sliceResolution}</span></div>
+            <div className="flex justify-between"><span>Bit depth</span><span className="font-semibold">{datasetStats.bitDepth}</span></div>
+            <div className="flex justify-between"><span>Axial thickness</span><span className="font-semibold">{datasetStats.axialSliceThicknessMm} mm</span></div>
+            <div className="flex justify-between"><span>Axial spacing</span><span className="font-semibold">{datasetStats.axialSpacingMm} mm</span></div>
+            <div className="flex justify-between"><span>Pixel spacing</span><span className="font-semibold">{datasetStats.pixelSpacingMm} mm</span></div>
+            <p className="text-xs text-slate-500">IVD levels: {datasetStats.classes.join(', ')}</p>
+            <p className="text-xs text-slate-500">Metadata-only summary; no images were downloaded or processed.</p>
           </div>
         </article>
 
         <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 className="text-lg font-semibold">Strongest Classes</h2>
+          <h2 className="text-lg font-semibold">Strongest Levels</h2>
           <div className="mt-4 space-y-3">
             {topClasses.map((c) => (
               <div key={c.label}>

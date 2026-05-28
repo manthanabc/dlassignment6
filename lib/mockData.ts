@@ -13,11 +13,9 @@ export const modelResults: Record<string, number> = {
 };
 
 export const classNames = [
-  'daisy',
-  'dandelion',
-  'rose',
-  'sunflower',
-  'tulip',
+  'L3-L4',
+  'L4-L5',
+  'L5-S1',
 ];
 
 export const modelDescriptions: Record<string, string> = {
@@ -184,60 +182,44 @@ export const modelSpecs: Record<string, {
 // Per-class accuracy metrics
 export const classAccuracy: Record<string, Record<string, number>> = {
   'ANN_Adam': {
-    daisy: 0.68,
-    dandelion: 0.63,
-    rose: 0.62,
-    sunflower: 0.71,
-    tulip: 0.62,
+    'L3-L4': 0.70,
+    'L4-L5': 0.66,
+    'L5-S1': 0.68,
   },
   'CNN_Adam': {
-    daisy: 0.78,
-    dandelion: 0.72,
-    rose: 0.75,
-    sunflower: 0.82,
-    tulip: 0.70,
+    'L3-L4': 0.78,
+    'L4-L5': 0.74,
+    'L5-S1': 0.76,
   },
   'Freeze_Adam': {
-    daisy: 0.86,
-    dandelion: 0.81,
-    rose: 0.84,
-    sunflower: 0.89,
-    tulip: 0.80,
+    'L3-L4': 0.84,
+    'L4-L5': 0.81,
+    'L5-S1': 0.83,
   },
   'Unfreeze_Adam': {
-    daisy: 0.92,
-    dandelion: 0.89,
-    rose: 0.91,
-    sunflower: 0.94,
-    tulip: 0.87,
+    'L3-L4': 0.88,
+    'L4-L5': 0.85,
+    'L5-S1': 0.87,
   },
   'Unfreeze_SGD': {
-    daisy: 0.88,
-    dandelion: 0.84,
-    rose: 0.87,
-    sunflower: 0.90,
-    tulip: 0.82,
+    'L3-L4': 0.85,
+    'L4-L5': 0.82,
+    'L5-S1': 0.84,
   },
   'Freeze_SGD': {
-    daisy: 0.82,
-    dandelion: 0.77,
-    rose: 0.80,
-    sunflower: 0.85,
-    tulip: 0.76,
+    'L3-L4': 0.80,
+    'L4-L5': 0.77,
+    'L5-S1': 0.79,
   },
   'CNN_SGD': {
-    daisy: 0.75,
-    dandelion: 0.69,
-    rose: 0.71,
-    sunflower: 0.78,
-    tulip: 0.67,
+    'L3-L4': 0.74,
+    'L4-L5': 0.70,
+    'L5-S1': 0.72,
   },
   'ANN_SGD': {
-    daisy: 0.64,
-    dandelion: 0.60,
-    rose: 0.59,
-    sunflower: 0.67,
-    tulip: 0.59,
+    'L3-L4': 0.67,
+    'L4-L5': 0.63,
+    'L5-S1': 0.65,
   },
 };
 

@@ -9,7 +9,7 @@ const routes = [
   { href: '/training', label: 'Training' },
   { href: '/optimizers', label: 'Optimizers' },
   { href: '/architecture', label: 'Architecture' },
-  { href: '/classes', label: 'Classes' },
+  { href: '/classes', label: 'Levels' },
 ];
 
 export default function AnalyticsShell({
